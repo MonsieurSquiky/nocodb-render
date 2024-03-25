@@ -1,15 +1,14 @@
 services:
 - type: web
-  name: xc
+  name: nocodb-iroh
   env: docker
-  autoDeploy: false
+  region: frankfurt # optional (defaults to oregon)
+  plan: free # optional (defaults to starter)
+  branch: main # optional (defaults to master)
+  autoDeploy: true
   healthCheckPath: /dashboard
   envVars:
   - key: DATABASE_URL
-    fromDatabase:
-      name: xc
-      property: connectionString
+    value: YOUR_FULL_DB_URL_WITH_CREDENTIALS
   - key: PORT
     value: 8080
-databases:
-- name: xc
